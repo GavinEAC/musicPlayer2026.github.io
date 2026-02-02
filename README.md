@@ -3,7 +3,7 @@ Comp Sci 30 assignment
 
 ### TO DO LIST
 - [x] Make a to do list
-- [ ] Create repo folders
+- [x] Create repo folders
 - [ ] Bring music
 - [ ] Bring old music player
 - [ ] Case study
