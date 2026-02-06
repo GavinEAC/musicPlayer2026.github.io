@@ -1,6 +1,7 @@
-/* DIVS IN PROCEDURAL VOICE
- 
- TBA
+/* 
+
+DIVS IN PROCEDURAL VOICE
+TBA
  
  */
 //
@@ -8,22 +9,26 @@
 //
 //Global Variables
 int appWidth, appHeight;
+parentRect screen;
 //
 
 /*void settings() { 
-  
+
   println(displayWidth, displayHeight);
   int shorterSide = (displayWidth > displayHeight) ? displayHeight : displayWidth;
   shorterSide *= 0.9; // 10 percent off. A good deal
   size(shorterSide, shorterSide);
   
-}
-*/
+}*/
+
 //End Settings
 
 void setup() {
   println(displayWidth, displayHeight);
+  appWidth = displayWidth;
+  appHeight = displayHeight;
   fullScreen();
+  divs();
 } 
 //End Setup
 
