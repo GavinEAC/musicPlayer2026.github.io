@@ -5,9 +5,10 @@
 //Classes - Objects
 
 //Global Variables
-MusicPlayer player;
-MusicPlayer player2;
-MusicPlayer player3;
+parentRect background;
+Rect myRect;
+MusicPlayer musicplayer;
+
 
 int appWidth;
 int appHeight;
@@ -17,19 +18,17 @@ int appHeight;
 void setup() {
   appWidth = displayWidth;
   appHeight = displayHeight;
-  print(appWidth);
   fullScreen();
-  player = new MusicPlayer(0,0);
-  player2 = new MusicPlayer(1000,340);
-  player3 = new MusicPlayer(450,45);
+  //background = new parentRect();
+  //myRect = new Rect(background, "%50", "%50", "100", "100");
+  //myRect.drawRect();
+  musicplayer = new MusicPlayer();
+  musicplayer.draw();
+  musicplayer.errorStatment("hello World");
   
 }
 
 void draw() {
-  background(color(0,0,0));
-  player.draw();
-  player2.draw();
-  player3.draw();
 }
 
 void keyPressed() {}

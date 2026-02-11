@@ -1,24 +1,32 @@
 class MusicPlayer{
-  int xPos = 0;
-  int yPos = 0;
-  int xVelocity = 3;
-  int yVelocity = 3;
-  MusicPlayer(int x, int y) {
-    this.xPos = x;
-    this.yPos = y;
-    fill(color(0,255,255));
+  
+  float[] divs;
+  
+  MusicPlayer() {
+  } 
+  
+  MusicPlayer(int numberOfRectangles) {
+    this.divs = new float[numberOfRectangles * 4];
   } 
   
   void draw() {
-    xPos+=xVelocity;
-    yPos+=yVelocity;
-    rect(xPos,yPos,100,100);
-    if(xPos <= 0 || xPos >= appWidth - 100) {
-      xVelocity *= -1;
-    }
+    errorStatment("Hello World");
+  }
+  
+  void rect(float x, float y, float w, float h) {
+    rect(x, y, w, h);
+  }
+  
+  void divsArray() {
     
-    if(yPos <= 0 || yPos >= appHeight - 100) {
-      yVelocity *= -1;
+  }
+  
+  //OUTPUT
+  void errorStatment(String description) {
+    println(description);
     }
+  
+  void errorStatment(String description, float variable) {
+   println(description, variable);
   }
 }
