@@ -19,16 +19,14 @@ void setup() {
   appWidth = displayWidth;
   appHeight = displayHeight;
   fullScreen();
-  //background = new parentRect();
-  //myRect = new Rect(background, "%50", "%50", "100", "100");
-  //myRect.drawRect();
+  background = new parentRect();
   musicplayer = new MusicPlayer();
-  musicplayer.draw();
-  musicplayer.errorStatment("hello World");
+  musicplayer.divsArray();
   
 }
 
 void draw() {
+  musicplayer.draw();
 }
 
 void keyPressed() {}

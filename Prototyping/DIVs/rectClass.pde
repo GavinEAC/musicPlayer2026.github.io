@@ -8,6 +8,7 @@ class parentRect{
     noFill();
     noStroke();
     rect(rectX, rectY, rectWidth, rectHeight);
+    stroke(153);
   }
     
 }
