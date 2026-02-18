@@ -22,11 +22,16 @@ void setup() {
   background = new parentRect();
   musicplayer = new MusicPlayer();
   musicplayer.divsArray();
+  fill(color(255,0,0));
+  
   
 }
 
 void draw() {
   musicplayer.draw();
+  fill(color(255,0,0));
+  textSize(musicplayer.divs[3].rectHeight);
+  text("NOW PLAYING", musicplayer.divs[3].rectX, musicplayer.divs[3].rectY + musicplayer.divs[3].rectHeight -2);
 }
 
 void keyPressed() {}

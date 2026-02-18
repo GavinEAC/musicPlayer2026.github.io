@@ -1,6 +1,6 @@
 class MusicPlayer{
   
-  int divsAmount = 11;
+  int divsAmount = 10;
   Rect[] divs = new Rect[divsAmount];
   
   MusicPlayer() {
@@ -33,8 +33,6 @@ class MusicPlayer{
     divs[4] = new Rect(divs[2], "%2", "%10", "%40", "%12");
     //Artist Rect
     divs[5] = new Rect(divs[2], "%2", "%25", "%30", "%6");
-    //Song Image Rect
-    divs[10] = new Rect(divs[2], "%75", "%10", "%15", "15");
     
     //CONTROL BUTTON RECTS
     //Pause Play
