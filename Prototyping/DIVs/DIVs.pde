@@ -43,16 +43,16 @@ void draw() {
   //text("NOW PLAYING", musicplayer.divs[3].rectX, musicplayer.divs[3].rectY + musicplayer.divs[3].rectHeight -2);
 }
 
-void keyPressed() {}
+void keyPressed() {
+  exit();
+}
 
 void mousePressed() {
   if(mouseX > musicButton.rectX && mouseX < musicButton.rectX + musicButton.rectWidth && mouseY > musicButton.rectY && mouseY < musicButton.rectY + musicButton.rectHeight){
     if(musicplayerActive == false) {
-      println("ON");
       musicplayerActive = true;
     }
     else if(musicplayerActive == true) {
-      println("OFF");
       musicplayerActive = false;
     }
   }
