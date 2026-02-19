@@ -13,7 +13,7 @@ class MusicPlayer{
   
   void draw() {
     for(int i = 0; i < divs.length; i++) {
-      divs[i].drawRect();
+      divs[i].drawRect(color(255,255,255));
     }
   }
   void divsArray() {

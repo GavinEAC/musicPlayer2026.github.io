@@ -25,17 +25,18 @@ void setup() {
   musicplayer = new MusicPlayer();
   musicplayer.divsArray();
   fill(color(255,0,0));
-  musicButton = new Rect(background, "0", "%90", "0", "%10");
+  musicButton = new Rect(background, "0", "0", "0", "%10");
   musicButton.rectWidth = musicButton.rectHeight;
   
   
 }
 
 void draw() {
+  background(color(255,255,255));
   if (musicplayerActive == true) {
     musicplayer.draw();
   }
-    musicButton.drawRect();
+    musicButton.drawRect(color(0,0,0));
     
   fill(color(255,0,0));
   //textSize(musicplayer.divs[3].rectHeight);

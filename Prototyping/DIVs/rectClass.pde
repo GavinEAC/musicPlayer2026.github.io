@@ -214,7 +214,7 @@ class Rect{
     println(rectX, rectY, rectWidth, rectHeight);
   }
   
-  void drawRect(){
+  void drawRect(color rectColor){
     fill(rectColor);
     rect(rectX, rectY, rectWidth, rectHeight);
   }
