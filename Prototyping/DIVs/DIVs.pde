@@ -25,18 +25,17 @@ void setup() {
   musicplayer = new MusicPlayer();
   musicplayer.divsArray();
   fill(color(255,0,0));
-  musicButton = new Rect(background, "0", "0", "0", "%10");
-  musicButton.rectWidth = musicButton.rectHeight;
+  musicButton = new Rect(background, "0", "0", "0", "%10", color(0,0,0));
   
   
 }
 
 void draw() {
-  background(color(255,255,255));
+  background(color(255,255,255)); 
   if (musicplayerActive == true) {
     musicplayer.draw();
   }
-    musicButton.drawRect(color(0,0,0));
+    musicButton.drawRect();
     
   fill(color(255,0,0));
   //textSize(musicplayer.divs[3].rectHeight);
@@ -48,7 +47,7 @@ void keyPressed() {
 }
 
 void mousePressed() {
-  if(mouseX > musicButton.rectX && mouseX < musicButton.rectX + musicButton.rectWidth && mouseY > musicButton.rectY && mouseY < musicButton.rectY + musicButton.rectHeight){
+  if(musicButton.isHovering()){
     if(musicplayerActive == false) {
       musicplayerActive = true;
     }

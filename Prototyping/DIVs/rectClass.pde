@@ -1,8 +1,8 @@
 class parentRect{
   int rectX = 0;
   int rectY = 0;
-  int rectWidth = displayWidth;
-  int rectHeight = displayHeight;
+  int rectWidth = appWidth;
+  int rectHeight = appHeight;
 
   parentRect(){
     noFill();
@@ -24,9 +24,10 @@ class Rect{
   parentRect rectMainParent;
   
   //CONSTRUCTOR FOR GRANDCHILDREN OF MAIN RECT AND ON
-  Rect(Rect parent, String x, String y, String Width, String Height){
+  Rect(Rect parent, String x, String y, String Width, String Height, color Color){
     //establishes parent rect
     rectParent = parent;
+    rectColor = Color;
     
     
     //Mananges x,y,height,width
@@ -98,9 +99,14 @@ class Rect{
       rectHeight = Integer.parseInt(Height);
     }
     
-    //defaulted settings of a rect object
-    rectColor = color(255,255,255);
+    //HANDLE SQUARES
+    if(rectHeight == 0) {
+      rectHeight = rectWidth;
+    }
     
+    if(rectWidth == 0) {
+      rectWidth = rectHeight;
+    }
   }
   //
   //
@@ -109,9 +115,10 @@ class Rect{
   //
   //
   //
-  Rect(parentRect parent, String x, String y, String Width, String Height){
+  Rect(parentRect parent, String x, String y, String Width, String Height, color Color){
     
     rectMainParent = parent;
+    rectColor = Color;
     
     if( x.contains("%") == true) {
       float percentValue = Integer.parseInt(x.substring(1));
@@ -179,11 +186,17 @@ class Rect{
     }
     else{
       rectHeight = Integer.parseInt(Height);
-   }
+    }
     
-    //defaulted settings of a rect object
-    rectColor = color(255,255,255);
+    //HANDLE SQUARES
+    if(rectHeight == 0) {
+      rectHeight = rectWidth;
+    }
     
+    if(rectWidth == 0) {
+      rectWidth = rectHeight;
+    }
+   
   }
   
   //draws rect starting from center. x,y is postiioned in center of rect
@@ -214,7 +227,7 @@ class Rect{
     println(rectX, rectY, rectWidth, rectHeight);
   }
   
-  void drawRect(color rectColor){
+  void drawRect(){
     fill(rectColor);
     rect(rectX, rectY, rectWidth, rectHeight);
   }

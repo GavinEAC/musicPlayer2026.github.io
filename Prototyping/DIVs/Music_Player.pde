@@ -13,40 +13,36 @@ class MusicPlayer{
   
   void draw() {
     for(int i = 0; i < divs.length; i++) {
-      divs[i].drawRect(color(255,255,255));
+      divs[i].drawRect();
     }
   }
   void divsArray() {
     //MAIN RECT
-    divs[0] = new Rect(background, "%33", "%33", "%33", "%33");
+    divs[0] = new Rect(background, "%33", "%33", "%33", "%33", color(255,255,255));
     
     //PANELS
     //Left Panel
-    divs[1] = new Rect(divs[0], "0", "0", "%50", "%100");
+    divs[1] = new Rect(divs[0], "0", "0", "%50", "%100", color(255,255,255));
     //Right Panel
-    divs[2] = new Rect(divs[0], "%50", "0", "%50", "%100");
+    divs[2] = new Rect(divs[0], "%50", "0", "%50", "%100", color(255,255,255));
     
     //SONG INFO RECTS
     //Now Playing Rect
-    divs[3] = new Rect(divs[2], "%2", "%2", "%94", "%5");
+    divs[3] = new Rect(divs[2], "%2", "%2", "%94", "%5", color(255,255,255));
     //Title Rect
-    divs[4] = new Rect(divs[2], "%2", "%10", "%40", "%12");
+    divs[4] = new Rect(divs[2], "%2", "%10", "%40", "%12", color(255,255,255));
     //Artist Rect
-    divs[5] = new Rect(divs[2], "%2", "%25", "%30", "%6");
+    divs[5] = new Rect(divs[2], "%2", "%25", "%30", "%6", color(255,255,255));
     
     //CONTROL BUTTON RECTS
     //Pause Play
-    divs[6] = new Rect(divs[2], "%40", "%55", "%20", "0");
-    divs[6].rectHeight = divs[6].rectWidth;
+    divs[6] = new Rect(divs[2], "%40", "%55", "%20", "0", color(255,255,255));
     //Previous Song
-    divs[7] = new Rect(divs[2], "%25", "%60", "%10", "0");
-    divs[7].rectHeight = divs[7].rectWidth;
+    divs[7] = new Rect(divs[2], "%25", "%60", "%10", "0", color(255,255,255));
     //Next Song
-    divs[8] = new Rect(divs[2], "%65", "%60", "%10", "0");
-    divs[8].rectHeight = divs[8].rectWidth;
+    divs[8] = new Rect(divs[2], "%65", "%60", "%10", "0", color(255,255,255));
     //Progress Bar
-    divs[9] = new Rect(divs[2], "%25", "%85", "%50", "%1");
-    
+    divs[9] = new Rect(divs[2], "%25", "%85", "%50", "%1", color(255,255,255));   
   }
   
   //OUTPUT
