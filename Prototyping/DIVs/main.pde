@@ -6,10 +6,11 @@
 
 //Global Variables
 parentRect background;
-Rect myRect;
 MusicPlayer musicplayer;
 boolean musicplayerActive = false;
 Rect musicButton;
+Rect topBar;
+Rect quitButton;
 
 
 int appWidth;
@@ -25,7 +26,10 @@ void setup() {
   musicplayer = new MusicPlayer();
   musicplayer.divsArray();
   fill(color(255,0,0));
-  musicButton = new Rect(background, "0", "0", "0", "%10", color(0,0,0));
+  topBar = new Rect(background, "0", "0", "%100", "%10", color(255,255,255));
+  musicButton = new Rect(topBar, "0", "0", "0", "%100", color(0,0,0));
+  quitButton = new Rect(topBar, "0", "0", "0", "%100", color(0,0,0));
+  quitButton.rectX = quitButton.rectParent.rectWidth - quitButton.rectWidth;
   
   
 }
@@ -36,6 +40,7 @@ void draw() {
     musicplayer.draw();
   }
     musicButton.drawRect();
+    quitButton.drawRect();
     
   fill(color(255,0,0));
   //textSize(musicplayer.divs[3].rectHeight);
@@ -47,13 +52,16 @@ void keyPressed() {
 }
 
 void mousePressed() {
-  if(musicButton.isHovering()){
+  if(musicButton.isHovering()) {
     if(musicplayerActive == false) {
       musicplayerActive = true;
     }
     else if(musicplayerActive == true) {
       musicplayerActive = false;
     }
+  }
+  if(quitButton.isHovering()) {
+    exit();
   }
 }
 
