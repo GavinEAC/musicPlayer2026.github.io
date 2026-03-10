@@ -40,12 +40,17 @@ class MusicPlayer {
         else if(int(i/4) == 8 || int(i/4) == 9) {divs[i] = columns[4];}
         else if(int(i/4) == 10) {divs[i] = columns[5];}
         else if(int(i/4) == 11) {divs[i] = columns[6];}
+        else if(int(i/4) == 12) {divs[i] = 0;}
+        else if(int(i/4) == 13) {divs[i] = appWidth - referent;}
+        
       }
       //Y POSITION
       if(i%4 == 1) {
         if(int(i/4) == 1 || int(i/4) == 5) {divs[i] = rows[0];}
         else if(int(i/4) == 2 || int(i/4) == 6 || int(i/4) == 8 || int(i/4) == 11) {divs[i] = rows[1];}
         else if(int(i/4) == 3 || int(i/4) == 4 || int(i/4) == 7 || int(i/4) == 9 || int(i/4) == 10) {divs[i] = rows[2];}
+        else if(int(i/4) == 12) {divs[i] = appHeight - referent;}
+        else if(int(i/4) == 13) {divs[i] = 0;}
       }
       //WIDTH
       if(i%4 == 2) {

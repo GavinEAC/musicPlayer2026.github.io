@@ -8,7 +8,7 @@ void setup() {
   appHeight = height;
   println(appWidth, appHeight);
   println(appWidth/appHeight);
-  musicPlayer  = new MusicPlayer(12);
+  musicPlayer  = new MusicPlayer(14);
 }
 
 void draw() {
