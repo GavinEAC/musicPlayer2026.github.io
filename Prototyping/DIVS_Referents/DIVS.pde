@@ -6,7 +6,9 @@ void setup() {
   fullScreen();
   appWidth = width;
   appHeight = height;
-  musicPlayer  = new MusicPlayer(10);
+  println(appWidth, appHeight);
+  println(appWidth/appHeight);
+  musicPlayer  = new MusicPlayer(12);
 }
 
 void draw() {

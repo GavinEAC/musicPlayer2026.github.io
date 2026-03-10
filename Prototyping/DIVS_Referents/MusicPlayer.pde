@@ -8,80 +8,57 @@ class MusicPlayer {
   }
   
   void divs() {
-    divs[0] = appWidth*1/3;
-    divs[1] = appHeight*1/3;
-    divs[2] = appWidth*1/3;
-    divs[3] = appHeight*1/3;
+    divs[0] = appWidth*1/4;
+    divs[1] = appHeight*1/4;
+    divs[2] = appWidth*1/2;
+    divs[3] = appHeight*1/2;
     
     float referent = divs[2] / 13;
-    float[] columns = new float[6];
+    float[] columns = new float[7];
     for ( int i=0; i<columns.length; i++) {
       if ( i==0 ) columns[0] = divs[0] + referent;
-      if ( i>0 && i< 5) columns[i] = columns[i-1] + referent;
-      if ( i==5 ) columns[i] = columns[i-1] + referent*2;
+      else if ( i==1 ) columns[1] = divs[0] + 3.5*referent;
+      else if ( i==2 ) columns[2] = divs[0] + 7.5*referent;
+      else if ( i>=3 && i<=5 ) columns[i] = divs[0] + (i+5)*referent;
+      else if ( i==6 ) columns[6] = divs[0] + 10.5*referent;
     }
     
     float [] rows = new float[3];
     for(int i=0; i < columns.length; i++) {
       if (i == 0) rows[0] = divs[1] + referent;
-      if (i == 1) rows[1] = rows[0] + referent*4;
-      if (i == 2) rows[2] = rows[1] + referent;
+      if (i == 1) rows[1] = divs[1] + 4*referent;
+      if (i == 2) rows[2] = divs[1] + 6*referent;
     }
     for(int i=4; i < divs.length; i++){
+    //for(int i = 4; i == 12; i++) {
       //X POSITION
       if(i%4 == 0) {
-        if(int(i/4) == 1) {
-          divs[i] = columns[0];
-        }
-        else if(int(i/4) < 7) {
-          divs[i] = columns[i/4 - 2];
-        }
-        else if(int(i/4) == 8 || int(i/4) == 9) {
-          divs[i] = columns[5];
-        }
+        if(int(i/4) <= 3) {divs[i] = columns[0];}
+        else if(int(i/4) == 4) {divs[i] = columns[1];}
+        else if(int(i/4) == 5 || int(i/4) == 6) {divs[i] = columns[2];}
+        else if(int(i/4) == 7) {divs[i] = columns[3];}
+        else if(int(i/4) == 8 || int(i/4) == 9) {divs[i] = columns[4];}
+        else if(int(i/4) == 10) {divs[i] = columns[5];}
+        else if(int(i/4) == 11) {divs[i] = columns[6];}
       }
       //Y POSITION
       if(i%4 == 1) {
-        if(int(i/4) == 1) {
-          divs[i] = rows[0];
-        }
-        else if(int(i/4) < 7) {
-          divs[i] = rows[1];
-        }
-        else if(int(i/4) == 8) {
-          divs[i] = rows[0];
-        }
-        else if(int(i/4) == 9) {
-          divs[i] = rows[1];
-        }
+        if(int(i/4) == 1 || int(i/4) == 5) {divs[i] = rows[0];}
+        else if(int(i/4) == 2 || int(i/4) == 6 || int(i/4) == 8 || int(i/4) == 11) {divs[i] = rows[1];}
+        else if(int(i/4) == 3 || int(i/4) == 4 || int(i/4) == 7 || int(i/4) == 9 || int(i/4) == 10) {divs[i] = rows[2];}
       }
       //WIDTH
       if(i%4 == 2) {
-        if(int(i/4) == 1) {
-          divs[i] = columns[4] - columns[0] + referent;
-        }
-        else if(int(i/4) < 7) {
-          divs[i] = referent;
-        }
-        else if(int(i/4) == 8 || int(i/4) == 9) {
-          divs[i] = columns[5] - columns[4] + 2*referent;
-        }
+        if(int(i/4) <= 2) {divs[i] = 5*referent;}
+        else if(int(i/4) >= 3 && int(i/4) <= 4) {divs[i] = 2.5*referent;}
+        else if(int(i/4) == 5) {divs[i] = 4*referent;}
+        else if(int(i/4) >= 6) {divs[i] = referent;}
       }
       //HEIGHT
       if(i%4 == 3) {
-        println(i-3, i-2, i-1, i);
-        if(int(i/4) == 1) {
-          divs[i] = rows[1] - rows[0] - referent;
-        }
-        else if(int(i/4) < 7) {
-          divs[i] = referent;
-        }
-        else if(int(i/4) == 8) {
-          divs[i] = rows[1] - rows[0] - referent;
-        }
-         else if(int(i/4) == 9) {
-          divs[i] = rows[1] - rows[0] - 2*referent;
-        }
+        if(int(i/4) == 1 || int(i/4) == 2 || int(i/4) == 5) {divs[i] = 2*referent;}
+        else if(int(i/4) == 3 || int(i/4) == 4) {divs[i] = 0.5*referent;}
+        else if(int(i/4) >= 6) {divs[i] = referent;}
       }
     }
   }
