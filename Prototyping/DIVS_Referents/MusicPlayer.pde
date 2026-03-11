@@ -121,5 +121,16 @@ class MusicPlayer {
     return (m*x) + b;
   }//End linearPoly
   
+  //Getters
+  Boolean musicPlayerGUI() {
+    return showGUI;
+  }//End Music Player GUI
   
-}
+   //Error Checks
+  void ERRORCheck(String description) {
+    println(description);
+  }//End
+  void ERRORCheck(String description, float variable) {
+    println(description, variable);
+  }//End
+}//End MusicPlayer
