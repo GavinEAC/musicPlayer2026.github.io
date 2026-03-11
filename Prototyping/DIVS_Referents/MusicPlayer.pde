@@ -8,7 +8,33 @@ class MusicPlayer {
     divs();
     summonMusicPlayer();
     showGUI = false;
-  }
+  }//End MusicPlayer
+  
+  void mousePressed() {
+    int num=12*4;
+    if ( mouseReturn (num) ) showGUI = varSwitch(showGUI);
+    num=13*4;
+    if ( mouseReturn (num) ) exit();;
+  }// End Mouse Pressed
+  
+  void keyPressed() {
+    //key=='CAP' || key=='LOWER' //Note" Caps Lock
+    //key==CODED || keyCode==ESC //Special Keys
+    if (key==CODED || keyCode==ESC) exit();
+    if (key=='Q' || key=='q') exit();
+    if (key=='M' || key=='m') showGUI = varSwitch(showGUI);
+  }//End Key Pressed
+  
+  Boolean varSwitch(Boolean variable) {
+    if ( variable==true ) {
+      return variable=false;
+    } else {
+      return variable=true;
+    }
+  }//End Boolean Variable Switch
+  Boolean mouseReturn (int num) {
+    return mouseX>divs[num] && mouseX<divs[num]+divs[num+2] && mouseY>divs[num+1] && mouseY<divs[num+1]+divs[num+3];
+  }//End Mouse Return
   
   void divs() {
     divs[0] = appWidth*1/4;
@@ -69,28 +95,31 @@ class MusicPlayer {
         else if(int(i/4) >= 6) {divs[i] = referent;}
       }
     }
-  }
+  }//End Divs
   
   
   void summonMusicPlayer() {
-    for(int i=0; i < divs.length - 8; i+=4) {
-      drawRect(divs[i], divs[i+1], divs[i+2], divs[i+3]);
+    if(showGUI) {
+      for(int i=0; i < divs.length - 8; i+=4) {
+        drawRect(divs[i], divs[i+1], divs[i+2], divs[i+3]);
+      }
     }
-  }
+    drawButtons();
+  }//End summonMusicPlayer
   
   void drawButtons() {
      for(int i=divs.length - 8; i < divs.length; i+=4) {
       drawRect(divs[i], divs[i+1], divs[i+2], divs[i+3]);
     }
-  }
+  }//End drawButtons
   
   void drawRect(float x, float y, float w, float h){
     rect(x,y,w,h);
-  }
+  }//End drawRect
   
   float linearPoly(float m, float x, float b) {
     return (m*x) + b;
-  }
+  }//End linearPoly
   
   
 }
