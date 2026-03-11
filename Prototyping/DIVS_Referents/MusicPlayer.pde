@@ -1,10 +1,13 @@
 class MusicPlayer {
   float[] divs;
+  float referent;
+  boolean showGUI;
   
   MusicPlayer(int numberOfRects) {
     this.divs = new float[numberOfRects*4];
     divs();
     summonMusicPlayer();
+    showGUI = false;
   }
   
   void divs() {
@@ -13,13 +16,13 @@ class MusicPlayer {
     divs[2] = appWidth*1/2;
     divs[3] = appHeight*1/2;
     
-    float referent = divs[2] / 13;
+    referent = divs[2] / 13;
     float[] columns = new float[7];
     for ( int i=0; i<columns.length; i++) {
       if ( i==0 ) columns[0] = divs[0] + referent;
       else if ( i==1 ) columns[1] = divs[0] + 3.5*referent;
       else if ( i==2 ) columns[2] = divs[0] + 7.5*referent;
-      else if ( i>=3 && i<=5 ) columns[i] = divs[0] + (i+5)*referent;
+      else if ( i>=3 && i<=5 ) columns[i] = divs[0] + (linearPoly(1, i, 5))*referent;
       else if ( i==6 ) columns[6] = divs[0] + 10.5*referent;
     }
     
@@ -70,13 +73,23 @@ class MusicPlayer {
   
   
   void summonMusicPlayer() {
-    for(int i=0; i < divs.length; i+=4) {
+    for(int i=0; i < divs.length - 8; i+=4) {
+      drawRect(divs[i], divs[i+1], divs[i+2], divs[i+3]);
+    }
+  }
+  
+  void drawButtons() {
+     for(int i=divs.length - 8; i < divs.length; i+=4) {
       drawRect(divs[i], divs[i+1], divs[i+2], divs[i+3]);
     }
   }
   
   void drawRect(float x, float y, float w, float h){
     rect(x,y,w,h);
+  }
+  
+  float linearPoly(float m, float x, float b) {
+    return (m*x) + b;
   }
   
   
