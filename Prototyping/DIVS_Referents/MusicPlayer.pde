@@ -133,4 +133,8 @@ class MusicPlayer {
   void ERRORCheck(String description, float variable) {
     println(description, variable);
   }//End
+  
+  void ERRORCheck(String description, int variable) {
+    println(description, variable);
+  }
 }//End MusicPlayer
