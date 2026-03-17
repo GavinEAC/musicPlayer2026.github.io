@@ -31,6 +31,31 @@ void drawMusicDivs(float[] x, float y, float d) {
   }
 }//End drawMusicDivs
 
-void drawMusicSymbols(int index, float divX, float divY, float divDimension) {//index from xVar. musicbuttonDivX
+void drawMusicSymbols(int index, float divX, float divY, float divDimension) {
+  divX = smallerNum(divX, divDimension);
+  divY = smallerNum(divY, divDimension);
+  divDimension = smallerNum(divDimension);
   
+  if(index == 1 || index == 2 || index == 7 || index == 8) {drawMusicDivs(divX, divY, divDimension);}
+  if(index == 2) {drawLines(divX, divY, divDimension);}
+  if(index == 6) {drawWideTriangle(6, divX, divY, divDimension);}
+  if(index == 7 || index == 8) {drawMusicDivs(smallerNum(divX, divDimension), smallerNum(divY, divDimension), smallerNum(divDimension));}
 }//End drawMusicSymbols
+
+float smallerNum(float divXY, float divDimension) {
+  return divXY = divXY + divDimension*1/4;
+}//End SmallerDivXY
+
+float smallerNum(float divDimension) {
+  return divDimension*1/2;
+}//End smallerDivDimension
+
+void drawWideTriangle(int index, float divX, float divY, float divDimension) {
+  triangle(divX, divY, divX+smallerNum(divX), smallerNum(divX, divDimension), divX, divY + smallerNum(divY));
+}
+
+
+void drawLines(float divX, float divY, float divDimension){
+  line(divX, divY, divX + divDimension, divY + divDimension);
+  line(divX + divDimension, divY, divX, divY + divDimension);
+}
