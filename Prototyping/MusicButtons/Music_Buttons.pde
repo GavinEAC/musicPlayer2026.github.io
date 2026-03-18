@@ -36,9 +36,19 @@ void drawMusicSymbols(int index, float divX, float divY, float divDimension) {
   divY = smallerNum(divY, divDimension);
   divDimension = smallerNum(divDimension);
   
-  if(index == 1 || index == 2 || index == 7 || index == 8) {drawMusicDivs(divX, divY, divDimension);}
+  if(index == 1 || index == 2 || index == 7 || index == 8) {
+    //Redundant if Statement?
+    if(index == 1 || index == 2 || index == 7 || index == 8) {drawMusicDivs(divX, divY, divDimension);}
+    if(index == 7 || index == 8) {
+      float node2X = divX + divDimension;//Made for reasing ease
+      divX = node2X - divDimension*1/8;
+      divY = divY - divDimension*1/8;
+      divDimension = smallerNum(divDimension);
+      drawWideTriangle(divX, divY, divDimension);
+    }
+  }
   if(index == 2) {drawLines(divX, divY, divDimension);}
-  if(index == 6) {drawWideTriangle(6, divX, divY, divDimension);}
+  if(index == 6) {drawWideTriangle(divX, divY, divDimension);}
   if(index == 7 || index == 8) {drawMusicDivs(smallerNum(divX, divDimension), smallerNum(divY, divDimension), smallerNum(divDimension));}
 }//End drawMusicSymbols
 
@@ -50,8 +60,9 @@ float smallerNum(float divDimension) {
   return divDimension*1/2;
 }//End smallerDivDimension
 
-void drawWideTriangle(int index, float divX, float divY, float divDimension) {
-  triangle(divX, divY, divX+smallerNum(divX), smallerNum(divX, divDimension), divX, divY + smallerNum(divY));
+void drawWideTriangle(float divX, float divY, float divDimension) {
+  triangle(divX, divY, divX+divDimension, divY + smallerNum(divDimension), divX, divY + divDimension);
+  //Apply smallerNum(divDimension) at 3rd parameter for thin triangle
 }
 
 
