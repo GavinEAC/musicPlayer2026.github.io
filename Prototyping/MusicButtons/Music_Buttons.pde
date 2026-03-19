@@ -35,10 +35,11 @@ void drawMusicSymbols(int index, float divX, float divY, float divDimension) {
   divX = smallerNum(divX, divDimension);
   divY = smallerNum(divY, divDimension);
   divDimension = smallerNum(divDimension);
-  
   if(index == 1 || index == 2 || index == 7 || index == 8) {drawMusicDivs(divX, divY, divDimension);}
   if(index == 2 || index == 11) {drawLines(divX, divY, divDimension);}
-  if(index == 5) {drawThinRect(divX, divY, divDimension);}
+  if(index == 3) {drawThinRect(divX, divY, divDimension); drawThinTriangle(-1, divX + smallerNum(divDimension)*1/2, divY, divDimension);}
+  if(index == 4) {drawThinTriangle(-1, divX, divY, divDimension); drawThinTriangle(-1, divX + smallerNum(divDimension), divY, divDimension);}
+  if(index == 5) {drawThinRect(divX, divY, divDimension); drawThinRect(divX + divDimension*3/4, divY, divDimension);}
   if(index == 6) {drawWideTriangle(divX, divY, divDimension);}
   if(index == 7 || index == 8) {
     //Draw Inner Square
@@ -51,8 +52,18 @@ void drawMusicSymbols(int index, float divX, float divY, float divDimension) {
     drawWideTriangle(divX, divY, divDimension);
   }
   if(index == 9) {drawThinRect(divX + divDimension*1/2, divY, divDimension);}
-  if(index == 9 || index == 10){drawThinTriangle(divX, divY, divDimension);}
-  if(index == 10) {drawThinTriangle(divX + smallerNum(divDimension), divY, divDimension);}
+  if(index == 9 || index == 10){drawThinTriangle(1, divX, divY, divDimension);}
+  if(index == 10) {drawThinTriangle(1, divX + smallerNum(divDimension), divY, divDimension);}
+  if(index == 11) {
+    float node2X = divX + divDimension;
+    float node2Y = divY;
+    float largerDimension = divDimension;
+    divDimension = divDimension*1/4;
+    divX = node2X - divDimension*1/4;
+    divY = node2Y - divDimension*1/4;
+    drawThinTriangle(1, divX, divY, divDimension);
+    drawThinTriangle(1, divX, divY + largerDimension - smallerNum(divDimension), divDimension);
+  }
   
 }//End drawMusicSymbols
 
@@ -69,8 +80,13 @@ void drawWideTriangle(float divX, float divY, float divDimension) {
   //Apply smallerNum(divDimension) at 3rd parameter for thin triangle
 }
 
-void drawThinTriangle(float divX, float divY, float divDimension) {
-  triangle(divX, divY, divX+smallerNum(divDimension), divY + smallerNum(divDimension), divX, divY + divDimension);
+void drawThinTriangle(int direction, float divX, float divY, float divDimension) {
+  if(direction == 1) {
+    triangle(divX, divY, divX+smallerNum(divDimension), divY + smallerNum(divDimension), divX, divY + divDimension);
+  }
+  if(direction == -1) {
+    triangle(divX+smallerNum(divDimension), divY, divX, divY + smallerNum(divDimension), divX+smallerNum(divDimension), divY + divDimension);
+  }
 }
 
 void drawThinRect(float divX, float divY, float divDimension) {
