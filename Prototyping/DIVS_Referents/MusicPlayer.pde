@@ -96,13 +96,69 @@ class MusicPlayer {
       }
     }
   }//End Divs
+  //MORE TO DO, NOT FINISHED
+  void controlButtons(float[] divs) {
+    for(int i = 24; int(i/4) < 12; i+=4) {
+      float biggerDivDimension = divs[i+2];
+      float divX = changeScale(divs[i], biggerDivDimension);
+      float divY = changeScale(divs[i+1], biggerDivDimension);
+      float divDimension = changeScale(divs[i+2]);
+      
+      if(int(i/4) == 6) {drawThinRect(divX, divY, divDimension); drawThinTriangle(-1, divX + divDimension*1/4, divY, divDimension);}
+      if(int(i/4) == 8) {drawWideTriangle(divX, divY, divDimension);}
+      if(int(i/4) == 10) {
+        drawLines(divX, divY, divDimension);
+        float node2X = divX + divDimension;
+        float node2Y = divY;
+        float largerDimension = divDimension;
+        divDimension = divDimension*1/4;
+        divX = node2X - divDimension*1/4;
+        divY = node2Y - divDimension*1/4;
+        drawThinTriangle(1, divX, divY, divDimension);
+        drawThinTriangle(1, divX, divY + largerDimension - changeScale(divDimension), divDimension);
+      }
+      if(int(i/4) == 11) {drawThinRect(divX + changeScale(divDimension), divY, divDimension); drawThinTriangle(1, divX, divY, divDimension);}
+
+    }
+  }//End controlButtons
   
+  float changeScale(float divXY, float divDimension) {
+    return divXY = divXY + divDimension*1/4;
+  }//End SmallerDivXY
   
+  float changeScale(float divDimension) {
+    return divDimension*1/2;
+  }//End smallerDivDimension
+
+  void drawThinRect(float divX, float divY, float divDimension) {
+    rect(divX, divY, divDimension*1/4, divDimension);
+  }
+  
+  void drawWideTriangle(float divX, float divY, float divDimension) {
+    triangle(divX, divY, divX+divDimension, divY +  changeScale(divDimension), divX, divY + divDimension);
+    //Apply smallerNum(divDimension) at 3rd parameter for thin triangle
+  }
+  
+  void drawThinTriangle(int direction, float divX, float divY, float divDimension) {
+    if(direction == 1) {
+      triangle(divX, divY, divX+changeScale(divDimension), divY + changeScale(divDimension), divX, divY + divDimension);
+    }
+    if(direction == -1) {
+      triangle(divX+changeScale(divDimension), divY, divX, divY + changeScale(divDimension), divX+changeScale(divDimension), divY + divDimension);
+    }
+  }
+  
+  void drawLines(float divX, float divY, float divDimension){
+    line(divX, divY, divX + divDimension, divY + divDimension);
+    line(divX + divDimension, divY, divX, divY + divDimension);
+  }
+    
   void summonMusicPlayer() {
     if(showGUI) {
       for(int i=0; i < divs.length - 8; i+=4) {
         drawRect(divs[i], divs[i+1], divs[i+2], divs[i+3]);
       }
+      controlButtons(divs);
     }
     drawButtons();
   }//End summonMusicPlayer
